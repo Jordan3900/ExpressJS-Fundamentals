@@ -3,6 +3,7 @@ const database = require('../config/database');
 const fs = require('fs');
 const path = require('path');
 const qs = require('querystring');
+const products = require('../config/database');
 
 module.exports = (req, res) => {
     req.pathname = req.pathname || url.parse(req.url).pathname;
@@ -21,7 +22,25 @@ module.exports = (req, res) => {
             });
 
             res.write(data);
-            res.end();  
+            res.end();
+        })
+    } else if (req.pathname === '/product/add' && req.method === 'POST') {
+        let dataString = '';
+
+        req.on('data', (data) => {
+            dataString += data;
+        });
+
+        req.on('end', (data) => {
+           
+            let product = qs.parse(dataString);
+            database.add(product)
+
+            res.writeHead(302, {
+                Location: '/'
+            });
+            
+            res.end();
         })
     } else {
         true;
