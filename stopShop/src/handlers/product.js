@@ -1,5 +1,4 @@
 const url = require('url');
-const database = require('../config/database');
 const fs = require('fs');
 const path = require('path');
 const qs = require('querystring');
@@ -34,7 +33,7 @@ module.exports = (req, res) => {
         req.on('end', (data) => {
            
             let product = qs.parse(dataString);
-            database.add(product)
+            products.add(product)
 
             res.writeHead(302, {
                 Location: '/'
