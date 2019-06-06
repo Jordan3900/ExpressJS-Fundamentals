@@ -3,8 +3,6 @@ let count = 1;
 
 module.exports = {};
 
-module.exports.products = products;
-
 module.exports.getAll = () => {
     return products;
 }

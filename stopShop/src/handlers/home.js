@@ -1,5 +1,6 @@
 const url = require('url');
 const fs = require('fs');
+const qs = require('querystring');
 const path = require('path');
 const database = require('../config/database')
 
@@ -23,7 +24,13 @@ module.exports = (req, res) => {
 
                 return;
             } 
-            let products = database.products;
+            let queryData = qs.parse(url.parse(req.url).query)
+
+            let products = database.getAll();
+
+            if (queryData.query) {
+                products = products.filter(x => x.name.toLowerCase() === queryData.query.toLowerCase())
+            }
 
             let content = '';
             for (const product of products) {
