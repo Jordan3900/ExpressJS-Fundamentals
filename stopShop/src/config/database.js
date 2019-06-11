@@ -7,7 +7,7 @@ module.exports.getAll = () => {
     return products;
 }
 
-module.exports.add = (product ) => {
+module.exports.add = (product) => {
     product.id = count++;
     products.push(product);
 } 

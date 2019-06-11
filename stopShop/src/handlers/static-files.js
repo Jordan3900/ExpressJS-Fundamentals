@@ -8,6 +8,7 @@ function getContentType(url) {
     switch (extension) {
         case 'css': return 'text/css';
         case 'ico': return 'image/x-icon';
+        case 'png': return 'image/png';
     }
 }
 
