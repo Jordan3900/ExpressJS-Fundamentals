@@ -3,7 +3,8 @@ const path = require('path');
 const url = require('url');
 
 function getContentType(url) {
-    let extension = url.split('.')[1];
+    let extensionTokens = url.split('.');
+    let extension = extensionTokens[extensionTokens.length - 1];
 
     switch (extension) {
         case 'css': return 'text/css';
