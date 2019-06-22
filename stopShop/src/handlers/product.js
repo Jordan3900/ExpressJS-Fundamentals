@@ -77,6 +77,6 @@ module.exports = (req, res) => {
         })
         form.parse(req);
     } else {
-        true;
+       return true;
     }
 }
