@@ -28,7 +28,7 @@ module.exports = (req, res) => {
 
         req.on('end', () => {
             let category = qs.parse(queryData);
-            Category.create(categories).then(() => {
+            Category.create(category).then(() => {
                 res.writeHead(302, {
                     Location: '/'
                 });
