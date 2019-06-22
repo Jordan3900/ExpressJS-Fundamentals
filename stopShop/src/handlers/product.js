@@ -1,10 +1,9 @@
 const url = require('url');
 const fs = require('fs');
 const path = require('path');
-const qs = require('querystring');
-const products = require('../config/database');
 const multiparty = require('multiparty');
 const shortid = require('shortid');
+const Product = require('../models/Product');
 
 module.exports = (req, res) => {
     req.pathname = req.pathname || url.parse(req.url).pathname;
@@ -68,12 +67,13 @@ module.exports = (req, res) => {
         });
 
         form.on('close', () => {
-            products.add(product);
-            res.writeHead(302, {
-                Location: '/'
-            });
+            Product.create(product).then(() => {
+                res.writeHead(302, {
+                    Location: '/'
+                });
 
-            res.end();
+                res.end();
+            });
         })
         form.parse(req);
     } else {

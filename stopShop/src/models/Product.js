@@ -2,17 +2,18 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const productSchema = new mongoose.Schema({
-    name: {type: schema.Types.String, required: true},
-    description: {type: Schema.Types.String},
+    name: String,
+    description: String,
     price: {
-        type: Schema.Types.Number,
+        type: Number,
         min: 0,
         max: Number.MAX_VALUE,
         default: 0
     },
-    image: {type: Schema.Types.String},
-    category: {type: Schema.Types.ObjectId, ref: 'Category'},
-    isBought: {type: Schema.Types.Boolean, default: false}
+    image: {type: String},
+    isBought: {type: Boolean, default: false},
+    categoryId: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'}
 });
 
 const Product = mongoose.model('Product', productSchema);
+module.exports = Product;
