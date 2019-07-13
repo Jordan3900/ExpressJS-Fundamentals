@@ -1,18 +1,13 @@
-const http = require('http');
 const port = '6969';
-const handlers = require('./handlers')
-
-let enviroment = process.env.NODE_ENV || 'development';
+const database = require('./config/database.config')
 const config = require('./config/config');
-const database = require('./config/database.config.js')
+const express = require('express');
+
+let app = express();
+let enviroment = process.env.NODE_ENV || 'development';
 
 database(config[enviroment]);
+require('./config/express')(app, config[enviroment]);
+require('./config/routes')(app);
 
-console.log(`Server start at port: ${port}`)
-http.createServer((res, req) => {
-    for (let handler of handlers) {
-        if (!handler(res, req)) {
-            break;
-        }
-    }
-}).listen(port);
+app.listen(port);
