@@ -12,7 +12,7 @@ const productSchema = new mongoose.Schema({
     },
     image: {type: String},
     isBought: {type: Boolean, default: false},
-    categoryId: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'}
+    category: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
 });
 
 const Product = mongoose.model('Product', productSchema);

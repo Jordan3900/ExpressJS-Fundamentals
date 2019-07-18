@@ -7,9 +7,22 @@ module.exports.index = (req, res) => {
         if (queryData.query) {
             products = products.filter(
                 p => p.name.toLowerCase()
-                        .includes(queryData.query))
+                    .includes(queryData.query))
         }
 
-        res.render('home/index', {products: products})
-    }
-    )};
+        let data = { products };
+
+        if (req.query.error) {
+            data.error = req.query.error;
+        } else if (req.query.success) {
+            data.success = req.query.success;
+        }
+
+        res.render('home/index', {
+            products: data.products,
+            error: data.error,
+            success: data.success
+        });
+    });
+
+};
