@@ -2,3 +2,7 @@
 /stopShop/src/content/images/*.png
 /stopShop/src/content/images/*.png
 /stopShop/src/content/images/*.png
+/stopShop/src/node_modules/*
+/movieDb/src/node_modules/*
+/MemeDB/src/node_modules/*
+/MongoPlayground/src/node_modules/*
