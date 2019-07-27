@@ -1,0 +1,8 @@
+{{#each cubes}}
+<div class="cube">
+        <img class="cube" src="{{this.image}}">
+        <p class="name">{{this.name}}</p>
+        <p><span>Difficulty level:</span> {{this.difficulty}}</p>
+        <button><a href="/cube/details/{{this.id}}">Details</a></button>
+ </div>
+{{/each}}
