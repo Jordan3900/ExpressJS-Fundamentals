@@ -1,4 +1,4 @@
-const handlers = require('../handlers');
+const handlers = require('../controllers');
 const multer = require('multer');
 
 let upload = multer({ dest: './content/images' });
@@ -17,4 +17,10 @@ module.exports = (app) => {
     app.get('/category/add', handlers.category.addGet);
     app.post('/category/add', handlers.category.addPost);
     app.get('/category/:category/products', handlers.category.productByCategory);
+
+    app.get('/user/register', handlers.user.registerGet);
+    app.post('/user/register', handlers.user.registerPost);
+    app.get('/user/login', handlers.user.loginGet);
+    app.post('/user/login', handlers.user.loginPost);
+    app.post('/user/logout', handlers.user.logoutPost);
 }

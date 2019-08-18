@@ -12,6 +12,8 @@ const productSchema = new mongoose.Schema({
     },
     image: {type: String},
     isBought: {type: Boolean, default: false},
+    creator: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
+    buyer: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     category: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
 });
 

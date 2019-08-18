@@ -1,8 +1,10 @@
 const Product = require('../models/Product');
+const user = require('../models/User');
+
 
 module.exports.index = (req, res) => {
     let queryData = req.query
-
+    user.seedAdminUser();
     Product.find().then((products) => {
         if (queryData.query) {
             products = products.filter(
